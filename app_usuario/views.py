@@ -4,6 +4,9 @@ from .models import Usuario
 from django.contrib import auth
 from django.contrib.auth.models import User
 
+def teste(request):
+    return render(request, 'test.html')
+
 def login(request):
     """Campo para autenticar o usuario"""
     if request.method == 'POST':
