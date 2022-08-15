@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 
 def login(request):
+    """Campo para autenticar o usuario"""
     if request.method == 'POST':
         email = request.POST.get('email')
         senha = request.POST.get('senha')
@@ -17,6 +18,7 @@ def login(request):
     return render(request, 'usuario/login.html')
 
 def cadastro(request):
+    """Campo para cadastrar um novo usuario"""
     if request.method == "POST":
         nome = request.POST['nome']
         email = request.POST['email']
@@ -38,13 +40,18 @@ def cadastro(request):
     return render(request, 'usuario/cadastro-de-usuario.html')
 
 def index(request):
-    usuario = request.user.id
-    tipo = Usuario.objects.filter(usuario_id = usuario)
-    dados = {
-        "tipo":tipo
-    }
-    return render(request, "index.html", dados)
+    """campo para redirecionar um usuario para a tela principal"""
+    if request.user.is_authenticated:
+        usuario = request.user.id
+        tipo = Usuario.objects.filter(usuario_id = usuario)
+        dados = {
+            "tipo":tipo
+        }
+        return render(request, "index.html", dados)
+    else:
+        return redirect('login')
 
 def logout(request):
+    """Campo para desconectar um usuario"""
     auth.logout(request)
     return redirect('login')
