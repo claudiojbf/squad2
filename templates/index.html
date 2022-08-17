@@ -9,10 +9,13 @@
 <body>
     {% for tip in tipo %}
         {% if tip.tipo_u == 'adm' %}
-            <h1>Você é um adm</h1>
+            <h1>Administrador</h1>
             <a href="{% url 'logout' %}">Deslogar</a>
         {% elif tip.tipo_u == 'ges' %}
-            <h1>Sou eu agora</h1>
+            <h1>Gestor</h1>
+            <a href="{% url 'logout' %}">Deslogar</a>
+        {% elif tip.tipo_u == 'pro' %}
+            <h1>Profissional</h1>
             <a href="{% url 'logout' %}">Deslogar</a>
         {% endif %}
     {% endfor %}
