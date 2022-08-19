@@ -30,6 +30,7 @@
                 </div>
                 <div>
                     <div class="form-nome">
+                        {% include "partials/_alert.html" %}
                         <label for="nome" class="form-label cadastro-label">Nome Completo</label>
                         <input id="nome" name="nome" class="form-control cadastro-input" type="text" required>
                     </div>
@@ -81,7 +82,7 @@
 
                     <div class="form-checkbox">
                         <select name = "tipo_u">
-                            <option value="" selected disabled>Escolha seu usuário</option>
+                            <option value="err" selected>Escolha seu usuário</option>
                             <option value="adm">Administrador</option>
                             <option value="ges">Gestor</option>
                             <option value="pro">Profissional</option>
