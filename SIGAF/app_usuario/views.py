@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Usuario
 from django.contrib import auth
 from django.contrib.auth.models import User
+from .util import validar_campo_senha, validar_campo_vazio, validar_nome_de_usuario, validar_email, validar_tipo_usuario
+from django.contrib import messages
 
 def henrique(request):
     return render(request, 'test.html')
@@ -32,14 +34,31 @@ def cadastro(request):
         senha = request.POST['senha']
         senha2 = request.POST['senha2']
         tipo_u = request.POST['tipo_u']
-        if senha == senha2:
-            user = User.objects.create_user(username = nome_u, email = email, first_name = nome, password = senha)
-            user.save()
-            user_id = User.objects.get(email = email)
-            user_i = get_object_or_404(User, pk = user_id.id)
-            adicional = Usuario.objects.create(usuario = user_i, telefone = telefone, data_n = data, tipo_u = tipo_u)
-            adicional.save()
-            return redirect('login')
+        campos = [nome,nome_u,senha,senha2,tipo_u]
+        for campo in campos:
+            if validar_campo_vazio(campo):
+                messages.error(request, "Preencha todos os campos corretamente")
+                return redirect('cadastro')
+            elif validar_nome_de_usuario(nome_u):
+                messages.error(request, "Login já existente")
+                return redirect('cadastro')
+            elif validar_email(email):
+                messages.error(request, "Email já cadastrado")
+                return redirect('cadastro')
+            elif validar_campo_senha(senha, senha2):
+                messages.error(request, "Confirmação de Senha não batem")
+                return redirect('cadastro')
+            elif validar_tipo_usuario(tipo_u):
+                messages.error(request, "Selecione o seu nivel de usuario")
+                return redirect('cadastro')
+            else:
+                user = User.objects.create_user(username = nome_u, email = email, first_name = nome, password = senha)
+                user.save()
+                user_id = User.objects.get(email = email)
+                user_i = get_object_or_404(User, pk = user_id.id)
+                adicional = Usuario.objects.create(usuario = user_i, telefone = telefone, data_n = data, tipo_u = tipo_u)
+                adicional.save()
+                return redirect('login')
     return render(request, 'usuario/cadastro-de-usuario.html')
 
 def index(request):
