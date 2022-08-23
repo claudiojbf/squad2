@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Cadastro de Locais</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Cadastro de Locais</h1>
+
+        <form action="{% url 'atualiza_local' %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <label for="nome_do_espaco"><b>Nome do Espaço:</b></label>
+                    <input type="text" class="form-control" name="nome" placeholder="Ex.:Sala de Treinamento" required>
+                    <input type="text" value= "{{locais.id}}" name="id" hidden>
+                </div>
+                <div class="col-12 col-lg-12">
+                    <label for="tamanho_do_espaco"><b>Tamanho do Espaço:</b></label>
+                    <input type="text" class="form-control" name="tamanho_do_espaco" placeholder="Ex.:44x66" required>
+                </div>
+                <div class="col-12 col-lg-12">
+                    <label for="Filial"><b>Filial:</b></label>
+                    <input type="text" class="form-control" name="Filial" placeholder="Ex.:Código da filial da localização." required>
+                </div>
+                <div class="col-12 col-lg-12">
+                    <label for="codigo_do_Local"><b>Código do Local:</b></label>
+                    <input type="text" class="form-control" name="codigo_do_Local" placeholder="Ex.:Informa-se um código para o local" required>
+                </div>
+                <div class="col-12 col-lg-12">
+                    <label for="Descrição_do_Local"><b>Descrição do Local:</b></label>
+                    <input type="text" class="form-control" name="Descrição_do_Local" placeholder="Ex.:Informa-se uma descrição do Local" required>
+                </div>
+                <div class="col-12 col-lg-12">
+                    <label for="situação"><b>Situação:</b></label>
+                    <input type="radio" class="form-control" name="Situação" value= "Ativo" placeholder="Ex.:" required>Ativo
+                    <input type="radio" class="form-control" name="Situação" value= "Inativo" placeholder="Ex.:" required>Inativo
+                </div>
+                
+                <div class="col-12 text-center">
+                    <button class="btn btn-success" type="submit">Confirmar</button>
+                </div>
+            </div>
+        </form>
+
+        <script src="" async defer></script>
+    </body>
+</html>
