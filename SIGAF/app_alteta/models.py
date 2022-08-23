@@ -1,10 +1,16 @@
-from distutils.command.upload import upload
-from select import select
 from django.db import models
-from posicao.models import Posicao
-from sub_divisao.models import SubDivisao
 
 # Create your models here.
+class Posicao(models.Model):
+    nome = models.CharField(max_length=50)
+    def __str__(self):
+        return self.nome
+
+class SubDivisao(models.Model):
+    nome = models.CharField(max_length=50)
+    def __str__(self):
+        return self.nome
+
 class Atletas(models.Model):
     nome = models.CharField(max_length=100)
     apelido = models.CharField(max_length=40)
@@ -39,4 +45,3 @@ class Atletas(models.Model):
     imagem = models.ImageField(upload_to = 'foto', blank = True)
     def __str__(self):
         return self.nome
-

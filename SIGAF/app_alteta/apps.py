@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SubDivisaoConfig(AppConfig):
+class AppAltetaConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'sub_divisao'
+    name = 'app_alteta'
