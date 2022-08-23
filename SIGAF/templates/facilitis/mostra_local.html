@@ -1,0 +1,9 @@
+{% if locais %}
+{% for local in locais %}
+{{local.nome_do_espaco}}
+<div class="col-12 text-center">
+    <a href="{% url 'deleta_local' local.id %}" class="btn btn-success" type="submit">apaga</a>
+    <a href="{% url 'editar_local' local.id %}" class="btn btn-success" type="submit">edita</a>
+</div>
+{% endfor %}
+{% endif %}
