@@ -30,8 +30,8 @@
                 <input id="endereço" name="endereço" class="form-control cadastro-input" type="text" required>
             </div>
 
-            <label for="estado">Estado</label>
-            <select name="estado" id="estado">
+            <label for="uf">UF</label>
+            <select name="uf" id="uf">
                 <option></option>
                 <option>AC</option>
                 <option>AL</option>
@@ -98,6 +98,8 @@
             </div>
 
             <div>
+
+                <label for="escolaridade">Escolaridade</label>
                 <select name="escolaridade" id="escolaridade" required>
                     <option selected disabled>Escolha seu grau de escolaridade</option>
                     <option>Ensino Médio Completo</option>
@@ -115,12 +117,54 @@
         </div>
     </div>
 
-</form>
-<div class="bullet">
-    <span id="bullet-1"> </span>
-    <span id="bullet-2"> </span>
-    <span id="bullet-3"> </span>
-</div>
+    <div class="step-3" id="step-3">
+        <div>
+            <label for="data-admissao">Data de Admissão</label>
+            <input id="data-admissao" type="date">
+        </div>
+
+        <div>
+            <label for="data-demissão">Data de Demissão</label>
+            <input id="data-demissão" type="date">
+        </div>
+        
+        <div>
+            <label for="salario">Salario</label>
+            <input id="salario" type="text">
+        </div>
+
+        <div>
+            <select name="setor" id="setor">
+                <option selected disabled></option>
+                <option>Fisioterapia</option>
+                <option>Nutrição</option>
+                <option>Psicologia</option>
+                <option>Serviço Social</option>
+                <option>Fisiologia</option>
+                <option>Odontologia</option>
+                <option>Clínica Geral</option>
+            </select>
+        </div>
+
+        <div>
+            <select name="funçao" id="funçao">
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="bullet">
+        <span id="bullet-1"> </span>
+        <span id="bullet-2"> </span>
+        <span id="bullet-3"> </span>
+    </div>
 </section>
     
 </body>
