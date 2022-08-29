@@ -136,6 +136,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Messages
 from django.contrib.messages import constants as messages
 MESSAGE_TAG = {
-    messages.ERROR: 'error',
-    messages.SUCCESS: 'success',
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success'
 }
+
+# pasta de media para informaçoes dos campos
+
+MEDIA_ROOT =os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = ('/media/')

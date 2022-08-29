@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(51, 163, 190);
+}
+.cadastro_atletas{
+    background-color: white;
+    box-shadow: 0 0 7px 1px;
+    width: 70vw;
+    margin: 25px auto;
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+.cadastro_atletas .form-group{
+    margin: 35px auto;
+}
+.cadastro_atletas .primaria{
+    font-size: 19px;
+    font-weight: bold;
+    color: rgb(82, 82, 82);
+}
+.cadastro_atletas .secundaria{
+    font-size: 17px;
+    color: rgb(90, 90, 90);
+}
+.cadastro_atletas input{
+    margin: 8px 0;
+}
+.cadastro_atletas input::placeholder{
+    opacity: .9;
+}
+.cadastro_atletas__titulo{
+    border-bottom: 1px solid rgb(173, 172, 172);
+    text-align: center;
+    padding-bottom: 10px;
+}
+.cadastro_atletas .finalizacao{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.cadastro_atletas .finalizacao-img img{
+    width: 90px;
+}

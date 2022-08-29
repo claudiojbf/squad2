@@ -11,6 +11,8 @@ class SubDivisao(models.Model):
     def __str__(self):
         return self.nome
 
+
+
 class Atletas(models.Model):
     nome = models.CharField(max_length=100)
     apelido = models.CharField(max_length=40)
@@ -24,7 +26,7 @@ class Atletas(models.Model):
     matricula_escolar = models.CharField(max_length=100, default='',blank=True)
     serie = models.CharField(max_length=20, default='',blank=True)
     nivel_escolar =models.CharField(max_length=30, default='', blank=True)
-    naturalidade_uf = models.CharField(max_length=3)
+    naturalidade_uf = models.CharField(max_length=5)
     cidade = models.CharField(max_length=40)
     bairro = models.CharField(max_length=40)
     endereco = models.CharField(max_length=40)
@@ -45,3 +47,9 @@ class Atletas(models.Model):
     imagem = models.ImageField(upload_to = 'foto', blank = True)
     def __str__(self):
         return self.nome
+    
+
+class Video(models.Model):
+    titulo = models.CharField(max_length=80)
+    atleta = models.ForeignKey(Atletas, on_delete=models.CASCADE)
+    video = models.FileField(upload_to='videos')
