@@ -1,0 +1,10 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.input-situacao1, .input-situacao2 > label {
+    font-size: 18px;
+    font-weight: 400;
+}
+
