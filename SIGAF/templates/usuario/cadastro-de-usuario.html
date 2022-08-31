@@ -19,8 +19,8 @@
         <h1>Cadastro de Usuário</h1>
     </section>
     <section class="cadastro">
-        <form class="steps" action="{% url 'cadastro' %}" method="POST">
-            {% csrf_token %}
+        <form class="steps" action="{% url 'cadastro' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
             <!-- PASSO-1 -->
             <div class="step-1" id="step-1">
                 <div class="titulo">
@@ -29,8 +29,8 @@
                     <hr>
                 </div>
                 <div>
+                {% include "partials/_alert.html" %}
                     <div class="form-nome">
-                        {% include "partials/_alert.html" %}
                         <label for="nome" class="form-label cadastro-label">Nome Completo</label>
                         <input id="nome" name="nome" class="form-control cadastro-input" type="text" required>
                     </div>
@@ -76,29 +76,47 @@
                     </div>
 
                     <div class="form-confimar">
-                        <label for="confirma-senha" class="form-label cadastro-label">Confirmar Senha</label>
+                       <label for="confirma-senha" class="form-label cadastro-label">Confirmar Senha</label>
                         <input id="confirma-senha" name="senha2" class="form-control cadastro-input" type="password" required>
                     </div>
 
                     <div class="form-checkbox">
-                        <select name = "tipo_u">
-                            <option value="err" selected>Escolha seu usuário</option>
-                            <option value="adm">Administrador</option>
-                            <option value="ges">Gestor</option>
-                            <option value="pro">Profissional</option>
+                        <select name = 'tipo_u'>
+                            {% for tipo in tipos_usuarios %}
+                            <option value="{{tipo.id}}">{{tipo.nome_tipo}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
-                <div class="botao-cadastro">
+                <div class="botoes">
                     <button id="step-2-button-prev">Anterior</button>
-                    <button type="submit">Finalizar Cadastro</button>
+                    <button id="step-2-button-next">Próximo</button>
                 </div>
             </div>
 
+            <!-- PASSO-3 -->
+            <div class="step-3" id="step-3">
+                <div class="titulo">
+                    <hr>
+                    <h2>Upload de Foto</h2>
+                    <hr>
+                </div>
+            <div class="step-3-img">
+                    <img src="">
+            </div>
+            <div class="botao-foto">
+                <input type="file" name="foto_usuario" required>
+            </div>
+            <div class="botao-cadastro">
+                <button id="step-3-button-prev">Anterior</button>
+                <button type="submit" >Finalizar Cadastro</button>
+            </div>
+            </div>
         </form>
         <div class="bullet">
             <span id="bullet-1"> </span>
             <span id="bullet-2"> </span>
+            <span id="bullet-3"> </span>
         </div>
     </section>
 

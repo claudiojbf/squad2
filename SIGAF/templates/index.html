@@ -7,17 +7,18 @@
     <title>teste</title>
 </head>
 <body>
-    {% for tip in tipo %}
-        {% if tip.tipo_u == 'adm' %}
-            <h1>Administrador</h1>
+        {% if tipo.tipo_u.sigla == 'FAC' %}
+            <h1>{{tipo.tipo_u.nome_tipo}}</h1>
             <a href="{% url 'logout' %}">Deslogar</a>
-        {% elif tip.tipo_u == 'ges' %}
-            <h1>Gestor</h1>
+            <a href="{% url 'perfil' %}">Perfil</a>
+        {% elif tipo.tipo_u.sigla == 'GES' %}
+            <h1>{{tipo.tipo_u.nome_tipo}}</h1>
             <a href="{% url 'logout' %}">Deslogar</a>
-        {% elif tip.tipo_u == 'pro' %}
-            <h1>Profissional</h1>
+            <a href="{% url 'perfil' %}">Perfil</a>
+        {% elif tipo.tipo_u.sigla == 'PRF' %}
+            <h1>{{tipo.tipo_u.nome_tipo}}</h1>
             <a href="{% url 'logout' %}">Deslogar</a>
+            <a href="{% url 'perfil' %}">Perfil</a>
         {% endif %}
-    {% endfor %}
 </body>
 </html>

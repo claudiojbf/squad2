@@ -7,7 +7,6 @@ from . import views
 
 urlpatterns = [
     path('local/', views.cadastro , name='Cadastro'),
-    path('', views.index, name='index'),
     path('mostra_local', views.mostra_local, name='mostra_local'),
     path('deleta_local/<int:local_id>', views.deleta_local, name='deleta_local'),
     path('editar_local/<int:local_id>', views.editar_local, name='editar_local'),

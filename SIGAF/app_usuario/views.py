@@ -1,13 +1,11 @@
 from datetime import datetime
+import pkgutil
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Usuario
+from .models import Usuario, TipoUsuario
 from django.contrib import auth
 from django.contrib.auth.models import User
 from .util import validar_campo_senha, validar_campo_vazio, validar_nome_de_usuario, validar_email, validar_tipo_usuario
 from django.contrib import messages
-
-def henrique(request):
-    return render(request, 'test.html')
 
 def login(request):
     """Campo para autenticar o usuario"""
@@ -24,6 +22,7 @@ def login(request):
 
 def cadastro(request):
     """Campo para cadastrar um novo usuario"""
+    tipos_usuarios = TipoUsuario.objects.all()
     if request.method == "POST":
         nome = request.POST['nome']
         email = request.POST['email']
@@ -34,7 +33,9 @@ def cadastro(request):
         senha = request.POST['senha']
         senha2 = request.POST['senha2']
         tipo_u = request.POST['tipo_u']
-        campos = [nome,nome_u,senha,senha2,tipo_u]
+        tipo_f = get_object_or_404(TipoUsuario, pk=tipo_u)
+        foto = request.FILES['foto_usuario']
+        campos = [nome,nome_u,senha,senha2]
         for campo in campos:
             if validar_campo_vazio(campo):
                 messages.error(request, "Preencha todos os campos corretamente")
@@ -56,16 +57,19 @@ def cadastro(request):
                 user.save()
                 user_id = User.objects.get(email = email)
                 user_i = get_object_or_404(User, pk = user_id.id)
-                adicional = Usuario.objects.create(usuario = user_i, telefone = telefone, data_n = data, tipo_u = tipo_u)
+                adicional = Usuario.objects.create(usuario = user_i, telefone = telefone, data_n = data, tipo_u = tipo_f, imagem = foto)
                 adicional.save()
                 return redirect('login')
-    return render(request, 'usuario/cadastro-de-usuario.html')
+    dados = {
+        "tipos_usuarios" : tipos_usuarios
+    }
+    return render(request, 'usuario/cadastro-de-usuario.html', dados)
 
 def index(request):
     """campo para redirecionar um usuario para a tela principal"""
     if request.user.is_authenticated:
         usuario = request.user.id
-        tipo = Usuario.objects.filter(usuario_id = usuario)
+        tipo = Usuario.objects.get(usuario_id = usuario)
         dados = {
             "tipo":tipo
         }
@@ -77,3 +81,12 @@ def logout(request):
     """Campo para desconectar um usuario"""
     auth.logout(request)
     return redirect('login')
+
+def perfil(request):
+    usuario = request.user.id
+    user = get_object_or_404(User, pk = usuario)
+    user_t = get_object_or_404(Usuario, usuario = user)
+    dados = {
+        "usuario" : user_t
+    }
+    return render(request, 'usuario/perfil.html', dados)

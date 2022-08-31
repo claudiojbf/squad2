@@ -1,17 +1,15 @@
-# from django.shortcuts import render
-
-# def cadastro_de_local(request):
-#     return render(request, 'facilitis/test.html')
-
-from threading import local
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from .models import Cadastro
 
+def mostra_local(request):
+    local = Cadastro.objects.all()
+    dado = {
+        'locais': local
+    }
+    return render(request, 'facilitis/mostra_local.html', dado)
 
-def index(request):
 
-    return render(request,'facilitis/index.html')
-
+"""CRUD LOCAL"""
 def cadastro(request):
     if request.method== 'POST':
         nome_do_espaco = request.POST['nome']
@@ -25,18 +23,8 @@ def cadastro(request):
         filial = filial, codigo_do_Local = codigo_do_local, descrição_do_Local = descrição_do_local, situação = situaçao)
 
         local.save()
-        return render(request,'facilitis/index.html')
-    return render(request,'facilitis/index.html')
-
-
-
-
-def mostra_local(request):
-    local = Cadastro.objects.all()
-    dado = {
-        'locais': local
-    }
-    return render(request, 'facilitis/mostra_local.html', dado)
+        return render(request,'facilitis/cadastro_de_locais.html')
+    return render(request,'facilitis/cadastro_de_locais.html')
 
 def deleta_local(request, local_id):
     local = get_object_or_404(Cadastro, pk=local_id)
@@ -59,6 +47,6 @@ def atualiza_local(request):
         local.Filial = request.POST['Filial']
         local.codigo_do_Local = request.POST['codigo_do_Local']
         local.Descrição_do_Local = request.POST['Descrição_do_Local']
-        local.situação = request.POST['situação']
+        local.situação = request.POST['Situação']
         local.save()
         return redirect('mostra_local')
