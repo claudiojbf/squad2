@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block 'title' %} Gestor - CEFAT {% endblock %}
-{% block content %}
+{% block 'head' %}
+{% include 'partials/_cssMenu.html' %}
+{% endblock %}
+{% block content %}   
     {% include 'partials/_menu.html' %}
     <link rel="stylesheet" href="{% static 'css/gestor-principal.css' %}">
     <main>
@@ -843,9 +846,8 @@
         </section>
         
     </main>
-    <!-- Swipper JS -->
-    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
-
-    <!-- JS -->
-    <script src="{% static 'js/gestor-principal.js' %}"></script>
+     <!-- Swipper JS -->
+     <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+     <!-- JS -->
+     <script src="{% static 'js/gestor-principal.js' %}"></script>
 {% endblock %}
