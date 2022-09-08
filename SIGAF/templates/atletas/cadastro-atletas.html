@@ -7,6 +7,9 @@
 {% endblock %}
 {% block content %}
     {% include 'partials/_menu.html' %}
+    <div class="cadastro_atletas__titulo">
+        <h1>Cadastro de atletas</h1>
+    </div>
     <form class="cadastro_atletas" action="{% url 'cadastrodeAtletas'  %}" method="POST" enctype="multipart/form-data">
 
         {% csrf_token %}
