@@ -1,28 +1,36 @@
 body{
-    background-color: rgb(51, 163, 190);
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family:'Montserrat'
+}
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 35px;
 }
 .cadastro_atletas{
     background-color: white;
-    box-shadow: 0 0 7px 1px;
-    width: 70vw;
-    margin: 25px auto;
-    padding: 15px 30px;
-    border-radius: 10px;
+    width: 70%;
+    margin: 0 auto 35px auto;
+    padding: 15px 45px;
 }
 .cadastro_atletas .form-group{
     margin: 35px auto;
 }
 .cadastro_atletas .primaria{
-    font-size: 19px;
-    font-weight: bold;
-    color: rgb(82, 82, 82);
+    margin-top: 20px;
+    margin-left: 20px;
 }
 .cadastro_atletas .secundaria{
-    font-size: 17px;
-    color: rgb(90, 90, 90);
+    color: rgb(54, 54, 54);
+    font-size: 14px;
 }
 .cadastro_atletas input{
     margin: 8px 0;
+    border-radius: 50px;
 }
 .cadastro_atletas input::placeholder{
     opacity: .9;
@@ -39,4 +47,16 @@ body{
 }
 .cadastro_atletas .finalizacao-img img{
     width: 90px;
+}
+.cadastro_atletas .botao-enviar{
+    width: 70%;
+    margin: 0 auto;
+}
+.cadastro_atletas .botao{
+    width: 100%;
+    background-color: #003D9B;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    padding: 5px 0;
 }

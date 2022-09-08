@@ -7,6 +7,8 @@ function negar() {
     var inputNivelEnsino2 = document.getElementById("optionsRadios5");
     var inputNomeEscola = document.getElementById("nomeEscola");
 
+    var inputNomeserie = document.getElementById("serie");
+
     var inputPlanoSaude = document.getElementById("planoSaude");
 
     var inputAlergia = document.getElementById("alergia");
@@ -15,10 +17,12 @@ function negar() {
         inputNivelEnsino1.disabled = true;
         inputNivelEnsino2.disabled = true;
         inputNomeEscola.disabled = true;
+        inputNomeserie.disabled = true;
     }else{
         inputNivelEnsino1.disabled = false;
         inputNivelEnsino2.disabled = false;
         inputNomeEscola.disabled = false;
+        inputNomeserie.disabled = false;
     }
 
     if(checkPlanoSaude.checked) {

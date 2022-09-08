@@ -241,7 +241,7 @@ def atualiza_atleta(request):
         for campo in campos:
             iterador = iterador +1
             if valida_campo_vazio(campo):
-                messages.error(request, f'preencha os campos coretamente, o caractere espaço não e considerado no começo do campo {nomes[iterador]}')
+                messages.error(request, f'preencha os campos coretamente, o caractere espaço não e considerado no começo do campo {nomes[iterador]}.')
                 return redirect(f'editar_atleta/{atleta.id}' )
                 
 
