@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load static  %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,6 +19,14 @@
     <div class="cadastro_atletas__titulo">
         <h1>Cadastro de atletas</h1>
     </div>
+=======
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} Cadastro de Atletas - CEFAT{% endblock %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/cadastro-atletas.css' %}">
+    {% include 'partials/_menu.html' %}
+>>>>>>> d36c11551fa7826d6e96b2796f09a9df8c3c765f
     <form class="cadastro_atletas" action="{% url 'cadastrodeAtletas'  %}" method="POST" enctype="multipart/form-data">
 
         {% csrf_token %}
@@ -36,11 +45,6 @@
         <div class="form-group">
             <label class="primaria">Data de nascimento</label>
             <input id="Nascimento" type="date" name="data_nacimento" required>
-        </div>
-
-        <div class="form-group">
-            <label class="primaria">Qual sua idade?</label>
-            <input type="number" class="form-control" name="idade" required placeholder="15">
         </div>
 
         <div class="form-group">
@@ -230,6 +234,4 @@
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
     <script src="{% static 'js/cadastro-atletas.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

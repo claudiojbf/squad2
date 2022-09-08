@@ -1,0 +1,851 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} Gestor - CEFAT {% endblock %}
+{% block content %}
+    {% include 'partials/_menu.html' %}
+    <link rel="stylesheet" href="{% static 'css/gestor-principal.css' %}">
+    <main>
+        <section class="gestor-pesquisa">
+            <form action="#">
+                <input type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisar">
+            </form>
+            <button>Pesquisar</button>
+        </section>
+
+        <!-- ATACANTES -->
+        <section class="gestor-atletas-atacante">
+            <div class="gestor-atletas-container">
+                <div class="gestor-atletas-container-titulo">
+                <h2>Atacantes</h2>
+                <a href="{% url 'cadastrodeAtletas' %}"><button>+</button></a>
+                </div>
+                <div class="slide-content-atacante swiper">
+                    <div class="swiper-wrapper">
+                        {% for atleta in atletas %}
+                        <div class="swiper-slide">
+                            <img class="gestor-atletas-img" src="{{atleta.imagem.url}}">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">{{atleta.nome}}</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">{{atleta.idade}}</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">{{atleta.data_nacimento}}</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">{{atleta.naturalidade_uf}}</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next  botao-proximo"></div>
+            <div class="swiper-button-prev botao-voltar"></div>
+            <!-- <div class="swiper-pagination paginaçao"></div> -->
+        </section>
+
+        <!-- GOLEIROS -->
+        <section class="gestor-atletas-goleiro">
+            <div class="gestor-atletas-container">
+                <div class="gestor-atletas-container-titulo">
+                <h2>Goleiros</h2>
+                <button>+</button>
+                </div>
+                <div class="slide-content-goleiro swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="gestor-atletas-img" src="./img/allana-miranda.jpeg">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next  botao-proximo-goleiro"></div>
+            <div class="swiper-button-prev botao-voltar-goleiro"></div>
+            <!-- <div class="swiper-pagination paginaçao"></div> -->
+        </section>
+        
+        <!-- ZAGUEIROS -->
+        <section class="gestor-atletas-zagueiro">
+            <div class="gestor-atletas-container">
+                <div class="gestor-atletas-container-titulo">
+                <h2>Zagueiros</h2>
+                <button>+</button>
+                </div>
+                <div class="slide-content-zagueiro swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="gestor-atletas-img" src="./img/allana-miranda.jpeg">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next  botao-proximo-zagueiro"></div>
+            <div class="swiper-button-prev botao-voltar-zagueiro"></div>
+            <!-- <div class="swiper-pagination paginaçao"></div> -->
+        </section>
+
+        <!-- MEIO CAMPOS -->
+        <section class="gestor-atletas-meioCampo">
+            <div class="gestor-atletas-container">
+                <div class="gestor-atletas-container-titulo">
+                <h2>Meio Campos</h2>
+                <button>+</button>
+                </div>
+                <div class="slide-content-meioCampo swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="gestor-atletas-img" src="./img/allana-miranda.jpeg">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next  botao-proximo-meioCampo"></div>
+            <div class="swiper-button-prev botao-voltar-meioCampo"></div>
+            <!-- <div class="swiper-pagination paginaçao"></div> -->
+        </section>
+
+
+        <!-- LATERAL ESQUERDO -->
+        <section class="gestor-atletas-lateralEsquerdo">
+            <div class="gestor-atletas-container">
+                <div class="gestor-atletas-container-titulo">
+                <h2>Lateral Esquerdo</h2>
+                <button>+</button>
+                </div>
+                <div class="slide-content-lateralEsquerdo swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="gestor-atletas-img" src="./img/allana-miranda.jpeg">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next  botao-proximo-lateralEsquerdo"></div>
+            <div class="swiper-button-prev botao-voltar-lateralEsquerdo"></div>
+            <!-- <div class="swiper-pagination paginaçao"></div> -->
+        </section>
+
+
+        <!-- LATERAL DIREITO -->
+        <section class="gestor-atletas-lateralDireito">
+            <div class="gestor-atletas-container">
+                <div class="gestor-atletas-container-titulo">
+                <h2>Lateral Direito</h2>
+                <button>+</button>
+                </div>
+                <div class="slide-content-lateralDireito swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="gestor-atletas-img" src="./img/allana-miranda.jpeg">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next  botao-proximo-lateralDireito"></div>
+            <div class="swiper-button-prev botao-voltar-lateralDireito"></div>
+            <!-- <div class="swiper-pagination paginaçao"></div> -->
+        </section>
+
+
+        <!-- VOLANTES -->
+        <section class="gestor-atletas-volante">
+            <div class="gestor-atletas-container">
+                <div class="gestor-atletas-container-titulo">
+                <h2>Volante</h2>
+                <button>+</button>
+                </div>
+                <div class="slide-content-volante swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="gestor-atletas-img" src="./img/allana-miranda.jpeg">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide card-atletas">
+                            <img src="">
+                            <div class="gestor-atletas-informaçao">
+                                <p class="gestor-atletas-informaçao-titulo">Nome Completo</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Idade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo"> Nascimento</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+
+                                <p class="gestor-atletas-informaçao-titulo">Naturalidade</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <p class="gestor-atletas-informaçao-titulo">Camisa</p>
+                                <p class="gestor-atletas-informaçao-conteudo">Lorem Ipsum</p>
+                                
+                                <div class="gestor-atletas-informaçao-link">
+                                <p><a class="gestor-atletas-informaçao-conteudo" href="#">Veja Mais</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next  botao-proximo-volante"></div>
+            <div class="swiper-button-prev botao-voltar-volante"></div>
+            <!-- <div class="swiper-pagination paginaçao"></div> -->
+        </section>
+        
+    </main>
+    <!-- Swipper JS -->
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+
+    <!-- JS -->
+    <script src="{% static 'js/gestor-principal.js' %}"></script>
+{% endblock %}

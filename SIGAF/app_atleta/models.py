@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 class Posicao(models.Model):
@@ -18,7 +19,6 @@ class Atletas(models.Model):
     apelido = models.CharField(max_length=40)
     posicao = models.ForeignKey(Posicao, on_delete=models.CASCADE, related_name='+')
     data_nacimento = models.DateField()
-    idade = models.IntegerField()
     rg = models.CharField(max_length=20,unique=True)
     cpf = models.CharField(max_length=14, unique=True)
     
@@ -47,6 +47,10 @@ class Atletas(models.Model):
     imagem = models.ImageField(upload_to = 'foto', blank = True)
     def __str__(self):
         return self.nome
+    
+    def idade(self):
+        hoje = date.today()
+        return hoje.year - self.data_nacimento.year - ((hoje.month, hoje.day) < (self.data_nacimento.month, self.data_nacimento.day))
     
 
 class Video(models.Model):

@@ -1,0 +1,25 @@
+body {
+    background: #F5F5F5;
+}
+
+.inputs{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 15%;
+    margin-left: 550px;
+}
+
+.botao {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid gray;
+}

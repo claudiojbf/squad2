@@ -1,7 +1,7 @@
 from django.db import models
 from django.forms import CharField
 
-class Cadastro(models.Model):
+class Local(models.Model):
     nome_do_espaco = models.CharField(max_length=200)
     tamanho_do_espaco = models.CharField(max_length=100)
     filial = models.CharField(max_length=100, default='CEFAT')

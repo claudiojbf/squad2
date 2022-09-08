@@ -16,29 +16,34 @@
             <div class="row">
                 <div class="col-12 col-lg-12">
                     <label for="nome_do_espaco"><b>Nome do Espaço:</b></label>
-                    <input type="text" class="form-control" name="nome" placeholder="Ex.:Sala de Treinamento" required>
+                    <input type="text" class="form-control" value = "{{locais.nome_do_espaco}}" name="nome" placeholder="Ex.:Sala de Treinamento" required>
                     <input type="text" value= "{{locais.id}}" name="id" hidden>
                 </div>
                 <div class="col-12 col-lg-12">
                     <label for="tamanho_do_espaco"><b>Tamanho do Espaço:</b></label>
-                    <input type="text" class="form-control" name="tamanho_do_espaco" placeholder="Ex.:44x66" required>
+                    <input type="text" class="form-control" value = "{{locais.tamanho_do_espaco}}" name="tamanho_do_espaco" placeholder="Ex.:44x66" required>
                 </div>
                 <div class="col-12 col-lg-12">
                     <label for="Filial"><b>Filial:</b></label>
-                    <input type="text" class="form-control" name="Filial" placeholder="Ex.:Código da filial da localização." required>
+                    <input type="text" class="form-control" name="Filial" value = "{{locais.filial}}" placeholder="Ex.:Código da filial da localização." required>
                 </div>
                 <div class="col-12 col-lg-12">
                     <label for="codigo_do_Local"><b>Código do Local:</b></label>
-                    <input type="text" class="form-control" name="codigo_do_Local" placeholder="Ex.:Informa-se um código para o local" required>
+                    <input type="text" class="form-control" name="codigo_do_Local" value = "{{locais.codigo_do_Local}}" placeholder="Ex.:Informa-se um código para o local" required>
                 </div>
                 <div class="col-12 col-lg-12">
                     <label for="Descrição_do_Local"><b>Descrição do Local:</b></label>
-                    <input type="text" class="form-control" name="Descrição_do_Local" placeholder="Ex.:Informa-se uma descrição do Local" required>
+                    <input type="text" class="form-control" name="Descrição_do_Local" value = "{{locais.descrição_do_Local}}" placeholder="Ex.:Informa-se uma descrição do Local" required>
                 </div>
                 <div class="col-12 col-lg-12">
                     <label for="situação"><b>Situação:</b></label>
-                    <input type="radio" class="form-control" name="Situação" value= "Ativo" placeholder="Ex.:" required>Ativo
-                    <input type="radio" class="form-control" name="Situação" value= "Inativo" placeholder="Ex.:" required>Inativo
+                    {% if locais.situação == "Ativo" %}
+                        <input type="radio" class="form-control" name="Situação" value= "Ativo" placeholder="Ex.:" required checked>Ativo
+                        <input type="radio" class="form-control" name="Situação" value= "Inativo" placeholder="Ex.:" required>Inativo
+                    {% elif locais.situação == "Inativo" %}
+                        <input type="radio" class="form-control" name="Situação" value= "Ativo" placeholder="Ex.:" required>Ativo
+                        <input type="radio" class="form-control" name="Situação" value= "Inativo" placeholder="Ex.:" required checked>Inativo
+                    {% endif %}
                 </div>
                 
                 <div class="col-12 text-center">

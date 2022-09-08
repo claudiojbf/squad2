@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fontes.css' %}">
+    <title>Cadrasto de Ocorrência</title>
+</head>
+
+<body>
+    <h1>Formulário de Ocorrências</h1>
+    <form action="{% url 'atualiza_ocorrencia' %}" method="POST">
+        {% csrf_token %}
+        <fieldset class="container">
+            <div class="mb-3">
+                <label for="disabledSelect" class="form-label">Sala que ocorreu o problema:</label>
+                <spam>{{ocorrencia.local.nome_do_espaco}}</spam>
+            </div>
+            <div class="mb-3">
+                <input type="text" value= "{{ocorrencia.id}}" name="ocorrencia_id" hidden>
+                <label for="disabledTextInput" class="form-label">Título de Ocorrência:</label>
+                <input type="text" id="disabledTextInput" name="detalhes_ocorrencia" class="form-control" value="{{ocorrencia.detalhes_ocorrencia}}"placeholder="Informações sobre: ">
+                
+            </div>
+            <div class="mb-3">
+                <label for="disabledTextInput" class="form-label">Email do responsável:</label>
+                <input type="email" id="disabledTextInput" name="email" class="form-control" value="{{ocorrencia.email}}" placeholder="Ex: seuemail@gmail.com ">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Descrição do Ocorrido</label>
+                <textarea input class="form-control" id="exampleFormControlTextarea1" name="descricao_ocorrido" rows="3" >{{ocorrencia.descricao_ocorrido}}</textarea>
+            </div>
+            
+<div>
+    <label for="disabledTextInput" class="form-label">Nível de urgência:</label>
+    <div class="inputs" name="nivel" value="nivel">
+
+        {% if ocorrencia.nivel_urgencia.sigla == "B" %}
+        <div class="urgente">
+            <label for="nivel">Urgência básica</label>
+            <input type="radio" name="nivel" value="B" checked>
+        
+        </div>
+        <div class="urgente">
+            <label for="nivel">Urgência mediana</label>
+            <input type="radio" name="nivel" value="M">
+        
+        </div>
+        <div class="urgente">
+            <label for="nivel">Urgência critica</label>
+            <input type="radio" name="nivel" value="U">
+        </div>
+        
+        
+        {% elif ocorrencia.nivel_urgencia.sigla == "M" %}
+        <div class="urgente">
+            <label for="nivel">Urgência básica</label>
+            <input type="radio" name="nivel" value="B">
+        
+        </div>
+        <div class="urgente">
+            <label for="nivel">Urgência mediana</label>
+            <input type="radio" name="nivel" value="M" checked>
+        
+        </div>
+        <div class="urgente">
+            <label for="nivel">Urgência critica</label>
+            <input type="radio" name="nivel" value="U">
+        </div>
+
+        {% elif ocorrencia.nivel_urgencia.sigla ==  "U" %}
+        <div class="urgente">
+            <label for="nivel">Urgência básica</label>
+            <input type="radio" name="nivel" value="B">
+        
+        </div>
+        <div class="urgente">
+            <label for="nivel">Urgência mediana</label>
+            <input type="radio" name="nivel" value="M">
+        
+        </div>
+        <div class="urgente">
+            <label for="nivel">Urgência critica</label>
+            <input type="radio" name="nivel" value="U" checked>
+        </div>
+
+        {% endif %}
+            <div class="botao">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+            <div class="{% static 'img-logo' %}">
+                <img src="img/cefat.jpeg" alt="">
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>
