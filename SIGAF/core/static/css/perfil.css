@@ -14,14 +14,15 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family:'Montserrat'
+    font-family:'Montserrat';
+    margin-top: 100px;
 }
 
 h1{
     color: white;
 }
 
-.perfil{
+.perfil-body{
     width: 70%;
     background-color: white;
     text-align: center;

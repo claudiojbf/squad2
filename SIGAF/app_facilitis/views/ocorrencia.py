@@ -17,7 +17,7 @@ def mostra_ocorrencia(request, ocorrencia_id):
     dados_ocorrencia = {
             'ocorrencia': ocorrencia
         }
-    return render (request, 'mostra_ocorrencia.html', dados_ocorrencia)
+    return render (request, 'facilitis/ocorrencia/mostra_ocorrencia.html', dados_ocorrencia)
 
 #CRUD OCORRENCIAS
 def registrar_ocorrencia(request):

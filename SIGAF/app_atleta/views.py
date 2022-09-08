@@ -18,7 +18,6 @@ def cadastrodeAtletas(request):
 
         posicao = get_object_or_404(Posicao, pk=request.POST['posicao'])
         data_nacimento = request.POST['data_nacimento']
-        idade = request.POST['idade']
         rg = request.POST['rg']
         cpf = request.POST['cpf']
         perna_dominante = request.POST['perna_dominante']
@@ -99,7 +98,7 @@ def cadastrodeAtletas(request):
                 return redirect('cadastrodeAtletas')
 
 
-        atleta = Atletas.objects.create(nome = nome, apelido=apelido, posicao=posicao,data_nacimento=data_nacimento,idade=idade,
+        atleta = Atletas.objects.create(nome = nome, apelido=apelido, posicao=posicao,data_nacimento=data_nacimento,
         rg=rg,cpf=cpf, perna_dominante=perna_dominante,matricula_escolar=matricula_escolar,nivel_escolar=nivel_escolar, serie=serie,naturalidade_uf=naturalidade_uf,
         cidade=cidade,bairro=bairro,cep=cep,endereco=endereco, numero_casa=numero_casa,telefone=telefone,whatsapp=whatsapp,whatsapp2=whatsapp2,nome_pai=nome_pai,nome_mae=nome_mae,
         telefone_responsavel=telefone_responsavel,telefone_responsavel2=telefone_responsavel2,peso=peso,altura=altura,plano_saude=plano_saude,
