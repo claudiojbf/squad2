@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_usuario',
+    'app_facilitis',
+    'app_atleta',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,16 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAG = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success'
+}
+
+# pasta de media para informaçoes dos campos
+
+MEDIA_ROOT =os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = ('/media/')

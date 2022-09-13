@@ -1,0 +1,19 @@
+{% for ocorrencia in ocorrencias %}
+    
+    <a href="{% url 'deleta_ocorrencia' ocorrencia.id %}" type="button" class="btn btn-danger"> deletar ocorrencia </a>
+    
+    <a href="{% url 'edita_ocorrencia' ocorrencia.id %}" type="button" class="btn btn-danger"> editar ocorrencia </a>
+    
+    <h6>{{ocorrencia.detalhes_ocorrencia}}</h6>
+    <h6>{{ocorrencia.descricao_ocorrido}}</h6>
+    
+    <h6>{{ocorrencia.nivel_urgencia.descricao}}</h6>
+    <h6>{{ocorrencia.email}}</h6>
+    
+
+    <a href="{% url 'mostra_ocorrencia' ocorrencia.id %}">
+        <h2>{{ocorrencia.local}}</h2>  
+    </a>
+{% endfor %}
+
+<a href="{% url 'registrar_ocorrencia' %}" type="button" class="btn btn-danger"> registrar </a>
