@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from app_facilitis.models.local import Local
+from app_usuario.models import Usuario
 
 def mostra_local(request):
     local = Local.objects.all()
@@ -11,20 +12,32 @@ def mostra_local(request):
 
 """CRUD LOCAL"""
 def cadastro(request):
+    usuario = request.user.id
+    usuario2 = Usuario.objects.get(usuario_id = usuario)
+    dados = {
+        "usuario":usuario2,
+    }
     if request.method== 'POST':
-        nome_do_espaco = request.POST['nome']
-        tamanho_do_espaco = request.POST['tamanho_do_espaco']
-        filial = request.POST['Filial']
-        codigo_do_local = request.POST['Código_do_Local']
-        descrição_do_local = request.POST['Descrição_do_Local']
-        situaçao = request.POST['Situação']
+        nome_do_espaco = request.POST['nome_espaco']
+        tipo_de_local = request.POST['tipo_local']
+        endereco = request.POST['endereco_local']
+        filial = request.POST['nome_filial']
+        tamanho_do_espaco = request.POST['tamanho_espaco']
+        descrição_do_local = request.POST['descricao_local']
+        situaçao = request.POST['situacao']
+        nome_responsavel = request.POST['nome_responsavel']
+        telefone_contato = request.POST['telefone_contato']
 
-        local = Local.objects.create(nome_do_espaco = nome_do_espaco,tamanho_do_espaco = tamanho_do_espaco,
-        filial = filial, codigo_do_Local = codigo_do_local, descrição_do_Local = descrição_do_local, situação = situaçao)
+        local = Local.objects.create(nome_do_espaco = nome_do_espaco, tipo_local = tipo_de_local, 
+        endereco = endereco, tamanho_do_espaco = tamanho_do_espaco, filial = filial, descrição_do_Local = descrição_do_local, 
+        situação = situaçao, nome_responsavel = nome_responsavel, telefone_contato = telefone_contato)
 
         local.save()
-        return render(request,'facilitis/local/cadastro_de_locais.html')
-    return render(request,'facilitis/local/cadastro_de_locais.html')
+        dados = {
+            "usuario":usuario2,
+        }
+        return render(request,'facilitis/local/cadastro_de_local.html', dados)
+    return render(request,'facilitis/local/cadastro_de_local.html', dados)
 
 def deleta_local(request, local_id):
     local = get_object_or_404(Local, pk=local_id)

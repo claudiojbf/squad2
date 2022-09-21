@@ -1,0 +1,42 @@
+body {
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form{
+    background-color: white;
+    width: 80%;
+    margin: 10px 0px
+}
+
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.inputs{
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-logo{
+    width: 100%;
+}
+
+.img-logo img{
+    width: 100px;
+}
+
+.img-logo div{
+    margin: 0 auto;
+}
+
+.botao {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}

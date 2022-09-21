@@ -19,6 +19,10 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 return redirect('index')
+            else:
+                messages.error(request, "Senha invalida!!!")
+        else:
+            messages.error(request, "Email invalido!!!")
     return render(request, 'usuario/login.html')
 
 @login_required(login_url='login')
@@ -83,9 +87,9 @@ def index(request):
     }
     if usuario2.tipo_u.sigla == "GES":
         return render(request, "gestor/index.html", dados)
-    elif usuario2.tipo_u_id.sigla == "FAC":
+    elif usuario2.tipo_u.sigla == "FAC":
         return render(request, "facilitis/index.html",dados)
-    elif usuario2.tipo_u_id.sigla == "PRF":
+    elif usuario2.tipo_u.sigla == "PRF":
         return render(request, "proficional/index.html", dados)
 
 def logout(request):

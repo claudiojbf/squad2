@@ -37,7 +37,7 @@ h1{
 .imagem-perfil img{
     width: 100%;
     height: 100%;
-    border-radius: 500px;
+    border-radius: 450px;
     border-style: outset;
     border-width: medium;
 }
@@ -55,4 +55,12 @@ a{text-decoration: none;}
 
 .botao_editar:hover{
     background-color: lightgray;
+}
+
+table{
+    margin: 0 auto;
+}
+
+td {
+    padding: 10px;
 }
