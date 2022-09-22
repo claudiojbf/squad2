@@ -20,8 +20,9 @@
                     <hr>
                     <p class="texto-divisa">SEUS DADOS:</p>
                     <hr>
+                    
                 </div>
-
+                {% include "partials/_alert.html" %}
                 <!-- FORMULÁRIO -->
                 <form action="{% url 'login' %}" method="POST">
                     {% csrf_token %}
