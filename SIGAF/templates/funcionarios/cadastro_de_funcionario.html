@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'estilo/fontes.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'estilo/estilo.css' %}">
+    <title>Cadastro De Funcionários</title>
+</head>
+<body>
+    <h1>Cadastro De Funcionários</h1>
+    <form class="cadastro_funcionarios" action="{% url 'cadastroFuncionario' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            
+        <div class="nome input-container">
+            <label class="nome" for="nome">Nome Completo:</label>
+            <input name="nome" id="nome" class="nome input" type="text" placeholder="" data-tipo="nome" required>
+        </div>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">E-mail:</label>
+            <input name="email" id="email" class="email input" type="email" placeholder="SeuEmail@dominio.com" data-tipo="email" required>
+        </div>
+        <div>
+            <label class="tel2" for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" class="tel input" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+        <div>
+            <label class="tel2" for="telefone">Telefone de Emergência:</label>
+            <input type="tel" id="telefone" class="tel input" name="telefone_emergência" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">CEP:</label>
+            <input name="cep" id="email" class="email" type="text" placeholder="62540000" data-tipo="email" required>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">CPF:</label>
+            <input name="cpf" id="email" class="email" type="text" placeholder="xxxxxxxxxxx" data-tipo="email" required>
+        </div>
+        <div>
+            <label class="cpf2">Endereço:</label>
+            <input name="endereco" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
+        </div>
+        <div>
+            <label class="rg2">Cidade:</label>
+            <input class="rg" type="text" placeholder="" name="cidade">
+        </div>
+        <div>
+            <label class="cpf2">Bairro:</label>
+            <input name="bairro" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
+        </div>
+        <div>
+            <label class="rg2">UF:</label>
+            <input class="rg" type="text" name="uf"  placeholder="SP">
+        </div>
+        <div>
+            <label class="rg2">Horario de Trabalho:</label>
+            <input name="horario"  class="rg" type="number" step="any" placeholder="4">
+        </div>
+        <div>
+            <label class="dtnasc2">Admitido:</label>
+            <input class="dtnasc" type="date" name="admitido" id="dataDeNascimento">
+        </div>
+
+        <div>
+            <label class="tel2" for="telefone">Função/Cargo:</label>
+            <select name="funcao" >
+                {% if funcoes %}
+                {% for funcao in funcoes %}
+                    <option name="{{funcao.nome}}">{{funcao.nome}}
+                {% endfor %}
+                {% endif %}
+            </select>
+        
+        </div>
+        {% comment %} <div>
+            <textarea class="texto form-control" aria-label="With textarea"></textarea>
+        </div> {% endcomment %}
+        <div class="botao-enviar">
+            <button type="submit" class="botao">Enviar</button>
+        </div>
+      </form>
+</body>
+</html>
