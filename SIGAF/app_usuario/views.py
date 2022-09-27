@@ -88,7 +88,7 @@ def index(request):
     if usuario2.tipo_u.sigla == "GES":
         return render(request, "gestor/index.html", dados)
     elif usuario2.tipo_u.sigla == "FAC":
-        return render(request, "facilitis/index.html",dados)
+        return render(request, "facilitis/ocorrencia/ocorrencia.html",dados)
     elif usuario2.tipo_u.sigla == "PRF":
         return render(request, "proficional/index.html", dados)
 

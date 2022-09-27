@@ -1,6 +1,7 @@
 body{
     background-color: #1e1e1e
 }
+
 .radio{
     margin-top: 20px;
     margin-left: 18%;
@@ -139,7 +140,7 @@ select{
     width: 600px;
 }
 
-button {
+.botao {
     border-radius: 50px;
     margin-top: 7px;
     margin-left: 18%;
