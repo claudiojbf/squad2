@@ -8,7 +8,7 @@
         <title>Perfil-CEFAT</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
         {% include 'partials/_cssMenu.html' %}
-        <link rel="stylesheet" href="{% static 'css/style-perfil.css' %}">
+        <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
     </head>
     <body>
         {% include 'partials/_menu.html' %}
@@ -21,22 +21,40 @@
             <div>
                 <h3>{{usuario.usuario.first_name}}</h3>
             </div>
-            <div>
-                <span>Email:</span>
-                <p>{{usuario.usuario.email}}</p>
-            </div>
-            <div>
-                <span>Data de Nascimento:</span>
-                <p>{{usuario.data_n}}</p>
-            </div>
-            <div>
-                <span>Telefone:</span>
-                <p>{{usuario.telefone}}</p>
-            </div>
-            <div>
-                <span>Setor:</span>
-                <p>{{usuario.tipo_u.nome_tipo}}</p>
-            </div>
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <span>Email:</span>
+                            <p>{{usuario.usuario.email}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <span>Data de Nascimento:</span>
+                            <p>{{usuario.data_n}}</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <span>Telefone:</span>
+                            <p>{{usuario.telefone}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <span>Setor:</span>
+                            <p>{{usuario.tipo_u.nome_tipo}}</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
+           
+            
+            
             <a href="">
                 <div class="botao_editar">
                     Editar

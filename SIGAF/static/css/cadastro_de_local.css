@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    color: white;
+    text-align: center;
+
+}
+
+.input-situacao1, .input-situacao2 > label {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+section{
+    margin-top: 100px;
+}
+
+.cadastro_local{
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.botao input{
+    background-color: #003D9B;
+    width: 100px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+

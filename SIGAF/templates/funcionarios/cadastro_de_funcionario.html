@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} Cadastro de Funcionario {% endblock %}
+{% block content %}
+{% include 'partials/_cssMenu.html' %}
+{% include 'partials/_menu.html' %}
+<link rel="stylesheet" href="{% static 'css/funcionario.css' %}">
+    <h1>Cadastro De Funcionários</h1>
+    <form class="cadastro_funcionarios" action="{% url 'cadastroFuncionario' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            
+        <div class="nome input-container">
+            <label class="nome" for="nome">Nome Completo:</label>
+            <input name="nome" id="nome" class="nome input" type="text" placeholder="" data-tipo="nome" required>
+        </div>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">E-mail:</label>
+            <input name="email" id="email" class="email input" type="email" placeholder="SeuEmail@dominio.com" data-tipo="email" required>
+        </div>
+        <div>
+            <label class="tel2" for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" class="tel input" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+        <div>
+            <label class="tel2" for="telefone">Telefone de Emergência:</label>
+            <input type="tel" id="telefone" class="tel input" name="telefone_emergência" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">CEP:</label>
+            <input name="cep" id="email" class="email" type="text" placeholder="62540000" data-tipo="email" required>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">CPF:</label>
+            <input name="cpf" id="email" class="email" type="text" placeholder="xxxxxxxxxxx" data-tipo="email" required>
+        </div>
+        <div>
+            <label class="cpf2">Endereço:</label>
+            <input name="endereco" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
+        </div>
+        <div>
+            <label class="rg2">Cidade:</label>
+            <input class="rg" type="text" placeholder="" name="cidade">
+        </div>
+        <div>
+            <label class="cpf2">Bairro:</label>
+            <input name="bairro" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
+        </div>
+        <div>
+            <label class="rg2">UF:</label>
+            <input class="rg" type="text" name="uf"  placeholder="SP">
+        </div>
+        <div>
+            <label class="rg2">Horario de Trabalho:</label>
+            <input name="horario"  class="rg" type="number" step="any" placeholder="4">
+        </div>
+        <div>
+            <label class="dtnasc2">Admitido:</label>
+            <input class="dtnasc" type="date" name="admitido" id="dataDeNascimento">
+        </div>
+
+        <div>
+            <label class="tel2" for="telefone">Função/Cargo:</label>
+            <select name="funcao" >
+                {% if funcoes %}
+                {% for funcao in funcoes %}
+                    <option name="{{funcao.nome}}">{{funcao.nome}}
+                {% endfor %}
+                {% endif %}
+            </select>
+        
+        </div>
+
+        {% comment %} <div>
+            <textarea class="texto form-control" aria-label="With textarea"></textarea>
+        </div> {% endcomment %}
+        <div class="botao-enviar">
+            <button type="submit" class="botao">Enviar</button>
+        </div>
+      </form>
+{% endblock %}

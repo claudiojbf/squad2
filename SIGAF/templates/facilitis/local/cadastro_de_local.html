@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} Cadastro de Locais {% endblock %}
+{% block content %}
+{% include 'partials/_cssMenu.html' %}
+{% include 'partials/_menu.html' %}
+<link rel="stylesheet" href="{% static 'css/cadastro_de_local.css' %}"> 
+<section>
+        <h1>Cadastro de Locais</h1>
+        <div class="cadastro_local">
+        <form action="{% url 'Cadastro' %}" method="POST">
+            {% csrf_token %}
+            <fieldset class="container">
+                
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Nome do Espaco:</label>
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Insira o nome do local" 
+                    name="nome_espaco">
+                </div>
+                <div class="mb-3">
+                    <label for="disabledSelect" class="form-label">Tipo de Local:</label>
+                    <select id="disabledSelect" class="form-select" name="tipo_local">
+                        <option>Campo:</option>
+                        <option value="Campo de Futebol">Campo de Futebol</option>
+                        <option value="Campo Futebol society">Campo Futebol society</option>
+                        <option value="Quadra futsal">Quadra futsal</option>
+                        <option value="Campo de Areia">Campo de Areia</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Endereço do Local:</label>
+                    <input type="text" id="disabledTextInput" class="form-control"
+                        placeholder="Ex: Av. General Alípio dos Santos " name="endereco_local">
+                </div>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Filial:</label>
+                    <input type="text" id="disabledTextInput" class="form-control"
+                        placeholder="Código da filial da localização: " name = "nome_filial">
+                </div>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Tamanho do Espaço:</label>
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Ex: 44x80" name="tamanho_espaco">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descrição do Local:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descricao_local"></textarea>
+                </div>
+                <div class="mb-3">
+                    <h4>Situação: </h4>
+                    <div class="input-situacao1">
+                        <input class="input-situacao" name="situacao" value = "True" type="radio"> Ativo: 
+                    </div>
+                    <div class="input-situacao2">
+                        <input class="input-situacao" name="situacao" value = "False" type="radio"> Inativo: 
+                    </div>
+
+
+
+                </div>
+                <div>
+                    <h4>DADOS E CONTATO DO RESPONSÁVEL DO LOCAL:</h4>
+                    <div class="mb-3">
+                        <label for="disabledTextInput" class="form-label">Nome completo:</label>
+                        <input type="text" id="disabledTextInput" class="form-control" name="nome_responsavel" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Telefone para Contato:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="telefone_contato" rows="1"></textarea>
+                    </div>
+                    <div class="botao">
+                        <input type="submit" value="Enviar"> 
+                    </div>
+            </fieldset>
+        </form>
+        </div>
+    </section>
+{% endblock %}

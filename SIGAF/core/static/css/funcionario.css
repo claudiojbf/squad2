@@ -1,0 +1,151 @@
+body{
+    background-color: #1e1e1e
+}
+
+.radio{
+    margin-top: 20px;
+    margin-left: 18%;
+}
+h1 {
+    color: white;
+    margin-top: 48px;
+    margin-left: 30%;
+}
+select{
+    border-radius: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    margin-left: 18%;
+    font-size: 20px;
+    width: 50%;
+}
+.cadastro_funcionarios{
+    margin-top: 30px;
+    background-color: white;
+    width: 70%;
+    margin: 0 auto 35px auto;
+    padding: 15px 45px;
+}
+
+.pessoais {
+    margin-left: 500px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nome {
+    border-radius: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 6px;
+    margin-left: 10%;
+    font-size: 20px;
+    width: 550px;
+}
+
+.email2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: inline-block;
+    margin-left: 50px;
+    font-size: 20px;
+    width: 550px;
+}
+
+.email {
+    border-radius: 50px;
+    display: block;
+    margin-top: 9px;
+    margin-left: 9.5%;
+    font-size: 20px;
+    width: 550px;
+}
+
+.tel2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    margin-left: 16.5%;
+    font-size: 20px;
+
+}
+
+.tel {
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-left: 17%;
+    font-size: 20px;
+    width: 550px;
+}
+
+.cpf2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    margin-left: 17%;
+    font-size: 20px;
+}
+
+.cpf {
+    border-radius: 50px;
+    margin-top: 8px;
+    margin-left: 17%;
+    font-size: 20px;
+    width: 550px;
+}
+
+.rg2 {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 17%;
+    font-size: 20px;
+}
+
+.rg {
+    border-radius: 50px;
+    margin-top: 9px;
+   margin-left: 17%;
+   font-size: 20px;
+   width: 550px;
+}
+
+.dtnasc2 {
+    display: flex;
+    margin-top: 15px;
+    margin-left: 17%;
+    font-size: 20px;
+}
+
+.dtnasc {
+    display: flex;
+    margin-top: -26px;
+    margin-left: 41%;
+    font-size: 19px;
+}
+
+.matri1 {
+    display: flex;
+    margin-left: 17%;
+    margin-top: 20px;
+}
+
+.matri {
+    border-radius: 50px;
+    display: flex;
+    font-size: 20px;
+    width: 200px;
+    margin-left: 29%;
+    margin-top: -24px;
+}
+
+.texto {
+    padding: 80px;
+    margin-top: 25px;
+    margin-left: 16%;
+    width: 600px;
+}
+
+.botao {
+    border-radius: 50px;
+    margin-top: 7px;
+    margin-left: 18%;
+    background: blue;
+    color: white;
+    width: 563px;
+    font-size: 20px;
+}

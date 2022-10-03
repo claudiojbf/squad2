@@ -13,16 +13,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}">Home</a>
                     </li>
+                    {% if usuario.tipo_u.sigla == "FAC" %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cadastro' %}">Cadastrar</a>
+                        <a class="nav-link" href="{% url 'registrar_ocorrencia' %}">Cadastrar Ocorrencia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="{% url 'Cadastro' %}">Cadastrar Local</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="{% url 'cadastro' %}">Cadastrar Usuario</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cadastroFuncionario' %}">Cadastrar Funcionario</a>
+                    </li>
+                    {% endif %}
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Divisões
                         </a>
@@ -31,7 +36,7 @@
                         <li><a class="dropdown-item" href="#">item2</a></li>
                         <li><a class="dropdown-item" href="#">item3</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="nav-item perfil-link">
                         <a class="nav-link" href="#">Perfil</a>
                     </li>

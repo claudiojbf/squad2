@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} Pagina Inicil {% endblock %}
+{% block content %}
+{% include 'partials/_cssMenu.html' %}
+{% include 'partials/_menu.html' %}
+<link rel="stylesheet" href="{% static 'css/ocorrencia_i.css' %}">
+    <main>
+        <section class="ocorrencias">
+            <div class="indices">
+                <div class="indice indice-pendente">
+                    <p>Pendentes</p>
+                    <div><p>N</p></div>
+                </div>
+                <div class="indice indice-processo">
+                    <p>Em processo</p>
+                    <div><p>N</p></div>
+                </div>
+                <div class="indice indice-resolvido">
+                    <p>Resolvidas</p>
+                    <div><p>N</p></div>
+                </div>
+            </div>
+
+            <div class="ocorrencia-container">
+                <div class="ocorrencias-titulo">
+                    <p>Ocorrências</p>
+                </div>
+                <div class="swiper slide-content-ocorrencia">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+
+                        <div class="swiper-slide slide-ocorrencia">
+                            <p><a href="#">Titulo da Ocorrência</a></p>
+                        </div>
+                    </div>
+                    <div class="swiper-scrollbar paginaçao"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Link Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- JS -->
+    <script src="{% static 'js/ocorrencia.js' %}"></script>
+{% endblock %}

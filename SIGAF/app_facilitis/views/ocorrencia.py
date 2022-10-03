@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from app_facilitis.models.local import Local
 from app_facilitis.models.ocorencias import Ocorrencia,NivelDeOcorrencia
+from app_usuario.models import Usuario
 
 def listar_ocorrencias(request):
 
@@ -21,9 +22,12 @@ def mostra_ocorrencia(request, ocorrencia_id):
 
 #CRUD OCORRENCIAS
 def registrar_ocorrencia(request):
+    usuario = request.user.id
+    usuario2 = Usuario.objects.get(usuario_id = usuario)
     local_ocorrencia = Local.objects.all()
     
     dados_local_exibir = {
+        'usuario' : usuario2,
         'local_ocorrencia': local_ocorrencia,
     }
     if request.method == 'POST':
