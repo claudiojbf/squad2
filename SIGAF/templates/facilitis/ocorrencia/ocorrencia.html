@@ -4,21 +4,22 @@
 {% block content %}
 {% include 'partials/_cssMenu.html' %}
 {% include 'partials/_menu.html' %}
+
 <link rel="stylesheet" href="{% static 'css/ocorrencia_i.css' %}">
     <main>
         <section class="ocorrencias">
             <div class="indices">
                 <div class="indice indice-pendente">
                     <p>Pendentes</p>
-                    <div><p>N</p></div>
+                    <div><p>{{op}}</p></div>
                 </div>
                 <div class="indice indice-processo">
                     <p>Em processo</p>
-                    <div><p>N</p></div>
+                    <div><p>{{ep}}</p></div>
                 </div>
                 <div class="indice indice-resolvido">
                     <p>Resolvidas</p>
-                    <div><p>N</p></div>
+                    <div><p>{{r}}</p></div>
                 </div>
             </div>
 
@@ -28,41 +29,11 @@
                 </div>
                 <div class="swiper slide-content-ocorrencia">
                     <div class="swiper-wrapper">
+                        {% for ocorrencia in ocorrencias %}
                         <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
+                            <p><a href="{% url 'edita_ocorrencia' ocorrencia.id %}">{{ocorrencia.detalhes_ocorrencia}}</a></p>
                         </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="swiper-scrollbar paginaçao"></div>
                 </div>

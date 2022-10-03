@@ -47,7 +47,7 @@ def registrar_ocorrencia(request):
 
         ocorrencia.save()
 
-        return redirect('listar_ocorrencias')
+        return redirect('index')
     return render(request, 'facilitis/ocorrencia/form_ocorrencia.html', dados_local_exibir)
 
 def deleta_ocorrencia(request, ocorrencia_id):
@@ -78,4 +78,4 @@ def atualiza_ocorrencia (request):
         
         ocorrencia.save()
 
-        return redirect ('listar_ocorrencias')
+        return redirect ('index')
