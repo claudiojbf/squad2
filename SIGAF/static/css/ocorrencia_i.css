@@ -134,6 +134,9 @@ section:last-child{
     color: #1e1e1e;
 }
 
+.botao {
+    margin-top: 20px;
+}
 
 
 @media (max-width:990px) {
