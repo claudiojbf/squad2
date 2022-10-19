@@ -32,24 +32,14 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Descrição do Ocorrido</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" name="descricao_ocorrido" rows="3"></textarea>
             </div>
-            <div class="mb-3">
-                <div>
-                    <legend>Nível de Urgência:</legend>
-                    <div class="inputs" name="nivel">
-                        <div class="urgente">
-                            <label for="">Urgência basica</label>
-                            <input type="radio" name="nivel" value="B">
-                        </div>
-                        <div class="urgente">
-                            <label for="">Urgência mediana</label>
-                            <input type="radio" name="nivel" value="M">
-                        </div>
-                        <div class="urgente">
-                            <label for="">Urgência critica</label>
-                            <input type="radio" name="nivel" value="U">
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Nível de Urgência:</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option disabled>Nível:</option>
+                    <option>Crítica:</option>
+                    <option>Urgente</option>
+                    <option>Não Urgente</option>
+                </select>
             </div>
             <div class="botao">
                 <button type="submit" class="btn btn-primary">Enviar</button>
