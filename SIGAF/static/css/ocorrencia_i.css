@@ -87,10 +87,6 @@ section:last-child{
     align-items: center;
 }
 
-.indices p{
-    font-size: 30px;
-}
-
 .indice-pendente{
     background-color: red;
     color: white;
