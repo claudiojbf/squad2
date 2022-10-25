@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,86 +9,109 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{% static 'estilo/fontes.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'estilo/estilo.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'estilo/fontes.css' %}">
+     {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
     <title>Cadastro De Funcionários</title>
 </head>
 <body>
     <h1>Cadastro De Funcionários</h1>
-    <form class="cadastro_funcionarios" action="{% url 'atualiza_funcionario' %}" method="POST">
+    <form class="cadastro_funcionarios" action="{% url 'cadastroFuncionario' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
-        <input name="id" value="{{funcionario.id}}" hidden>
+            {% include 'partials/_alert.html' %}
         <div class="nome input-container">
+
             <label class="nome" for="nome">Nome Completo:</label>
-            <input name="nome" value="{{funcionario.nome}}" id="nome" class="nome input" type="text" placeholder="" data-tipo="nome" required>
+            <input name="nome" id="nome" class="nome input" type="text" placeholder="" data-tipo="nome" required>
         </div>
         </div>
         <div class="email container">
             <label class="email2" for="email">E-mail:</label>
-            <input name="email" value="{{funcionario.email}}" id="email" class="email input" type="email" placeholder="SeuEmail@dominio.com" data-tipo="email" required>
+            <input name="email" id="email" class="email input" type="email" placeholder="SeuEmail@dominio.com" data-tipo="email" required>
         </div>
         <div>
             <label class="tel2" for="telefone">Telefone:</label>
-            <input type="tel" value="{{funcionario.telefone}}" id="telefone" class="tel input" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+            <input type="tel" id="telefone" class="tel input" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
         </div>
         <div>
             <label class="tel2" for="telefone">Telefone de Emergência:</label>
-            <input type="tel" id="telefone" value="{{funcionario.contato_emergencia}}" class="tel input" name="contato_emergencia" placeholder="(XX) XXXXX-XXXX" required>
+            <input type="tel" id="telefone" class="tel input" name="telefone_emergência" placeholder="(XX) XXXXX-XXXX" required>
         </div>
         </div>
         <div class="email container">
             <label class="email2" for="email">CEP:</label>
-            <input name="cep" value="{{funcionario.cep}}" id="email" class="email" type="text" placeholder="62540000" data-tipo="email" required>
+            <input name="cep" id="email" class="email" type="text" placeholder="62540000" data-tipo="email" required>
         </div>
         <div class="email container">
             <label class="email2" for="email">CPF:</label>
-            <input name="cpf" value="{{funcionario.cpf}}" id="email" class="email" type="text" placeholder="xxxxxxxxxxx" data-tipo="email" required>
+            <input name="cpf" id="email" class="email" type="text" placeholder="xxxxxxxxxxx" data-tipo="email" required>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">CPF:</label>
+            <input name="image_cpf" id="email" class="email" type="file" placeholder="xxxxxxxxxxx" data-tipo="email" required>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">RG:</label>
+            <input name="rg" id="email" class="email" type="text" placeholder="xxxxxxxxxxx" data-tipo="email" required>
+        </div>
+        <div class="email container">
+            <label class="email2" for="email">foto do RG:</label>
+            <input name="foto_rg" id="email" class="email" type="file" placeholder="xxxxxxxxxxx" data-tipo="email" required>
         </div>
         <div>
             <label class="cpf2">Endereço:</label>
-            <input name="endereco" value="{{funcionario.endereco}}" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
+            <input name="endereco" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
         </div>
         <div>
             <label class="rg2">Cidade:</label>
-            <input class="rg" value="{{funcionario.cidade}}" type="text" placeholder="" name="cidade">
+            <input class="rg" type="text" placeholder="" name="cidade">
         </div>
         <div>
             <label class="cpf2">Bairro:</label>
-            <input name="bairro" value="{{funcionario.bairro}}" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
+            <input name="bairro" id="cpf" class="cpf" type="text" data-tipo="cpf" required>
         </div>
         <div>
             <label class="rg2">UF:</label>
-            <input class="rg" type="text" value="{{funcionario.uf}}" name="uf"  placeholder="SP">
+            <input class="rg" type="text" name="uf"  placeholder="SP">
         </div>
         <div>
             <label class="rg2">Horario de Trabalho:</label>
-            <input name="horario" value="{{funcionario.horario_de_trabalho}}" class="rg" type="number" step="any" placeholder="4">
+            <input name="horario"  class="rg" type="number" step="any" placeholder="4">
         </div>
-        {% comment %} <div>
+        <div>
             <label class="dtnasc2">Admitido:</label>
-            <input class="dtnasc" type="date" name="admitido" value="09/03/2002" id="dataDeNascimento" required>
-        </div> {% endcomment %}
+            <input class="dtnasc" type="date" name="admitido" id="dataDeNascimento">
+        </div>
 
+
+        <div class="email container">
+            <label class="email2" for="email">foto do funcionario:</label>
+            <input name="foto_funcionario" id="email" class="email" type="file" placeholder="xxxxxxxxxxx" data-tipo="email" required>
+        </div>
+        
+        <div>
+            <label class="rg2">numero_cartao:</label>
+            <input class="rg" type="text" name="numero_cartao"  placeholder="xxxx xxxx xxxx xxxx">
+        </div>
+        <div>
+            <label class="rg2">CVV:</label>
+            <input class="rg" type="text" name="cvv"  placeholder="xxx">
+        </div>
+        <div>
+            <label class="rg2">nome cadastrado no cartão:</label>
+            <input class="rg" type="text" name="nome_cartao" >
+        </div>
         <div>
             <label class="tel2" for="telefone">Função/Cargo:</label>
             <select name="funcao" >
-                
                 {% if funcoes %}
-                <option name="{{funcionario.funcao}}" selected="{{funcionario.funcao}}">{{funcionario.funcao}}
                 {% for funcao in funcoes %}
-                
-                    <option name="{{funcao.nome}}" >{{funcao.nome}}
+                    <option name="{{funcao.nome}}">{{funcao.nome}}
                 {% endfor %}
                 {% endif %}
             </select>
         
-        </div>
-        <div class="radio">
-            <label class="dtnasc2">Ativo:</label>
-            <input type="radio" name="estado_funcionario" class="radio" value="True" checked> ativo<br>
-            <input  type="radio" name="estado_funcionario" class="radio" value="False"> desativado
         </div>
         <div class="botao-enviar">
             <button type="submit" class="botao">Enviar</button>

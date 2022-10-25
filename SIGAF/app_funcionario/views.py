@@ -1,7 +1,8 @@
+
 from django.shortcuts import render,get_object_or_404, redirect
 from app_funcionario.models import Funcionario, Funcao
 from django.contrib.auth.models import User
-
+from app_funcionario.valida import *
 def cadastroFuncionario(request):
     funcoes = Funcao.objects.order_by('id')
     dados = {
@@ -9,9 +10,9 @@ def cadastroFuncionario(request):
     }
     if request.method == 'POST':
         nome = request.POST ['nome']
-        email = request.POST ['email']
-        telefone = request.POST ['telefone']
-        telefone_emergência = request.POST ['telefone_emergência']
+        email = request.POST['email']
+        telefone = request.POST['telefone']
+        telefone_emergência = request.POST['telefone_emergência']
         cep = request.POST['cep']
         endereco = request.POST ['endereco']
         cidade = request.POST ['cidade']
@@ -20,25 +21,32 @@ def cadastroFuncionario(request):
         horario = request.POST['horario']
         funcao = request.POST['funcao']
         admitido = request.POST ['admitido']
-        cpf = request.POST ['cpf']
-        # cpf_criptografado = hashlib.md5(cpf.encode('utf-8')).hexdigest()
-        if not nome.strip() or not telefone_emergência.strip() or not email.strip() or not telefone.strip():
-            print('nome em branco')
-            return redirect('cadastroFuncionario')
-        if User.objects.filter(email=email).exists():
-            return redirect('cadastroFuncionario')
+        cpf = request.POST['cpf']
+        foto_cpf = request.FILES['image_cpf']
+        rg = request.POST['rg']
+        foto_rg = request.FILES['foto_rg']
+        foto_funcionario = request.FILES['foto_funcionario']
+        # dados bancarios
 
-        if Funcionario.objects.filter(cpf=cpf).exists():
-            return redirect('cadastroFuncionario')
-        funcao = get_object_or_404(Funcao, nome = funcao)
-        
-        expecialista = Funcionario.objects.create(funcao = funcao,nome=nome,telefone=telefone,uf = uf,
-        cep=cep,cpf=cpf,endereco=endereco,cidade=cidade,bairro=bairro,horario_de_trabalho=horario,admitido=admitido,
-        contato_emergencia=telefone_emergência, email=email)
+        banco =request.POST['banco']
+        conta = request.POST['conta']
+        pix=request.POST['pix']
+        agencia=request.POST['agencia']
+        # include('funcionarios.valida') 
+        if valida_tudo(request,rg,telefone,telefone_emergência,cep,nome,email,cpf, pix,conta,agencia,banco) == False:
+            return redirect('cadastroFuncionario') 
+
+        funcao_v = get_object_or_404(Funcao, nome = funcao)
+
+        expecialista = Funcionario.objects.create(funcao = funcao_v ,nome=nome,telefone=telefone,uf = uf,cep=cep,cpf=cpf,
+        foto_cpf=foto_cpf,rg=rg,foto_rg=foto_rg,endereco=endereco,cidade=cidade,bairro=bairro,horario_de_trabalho=horario,
+        admitido=admitido,contato_emergencia=telefone_emergência, email=email, foto_funcionario=foto_funcionario,
+        banco= banco, conta=conta,pix=pix,agencia=agencia)
         expecialista.save()
         return redirect('index')
 
     return render(request, 'funcionarios/cadastro_de_funcionario.html', dados) 
+
 def editar_funcionario(request, funcionario_id):
     funcionario = get_object_or_404(Funcionario, pk = funcionario_id)
     funcoes = Funcao.objects.order_by('id')
