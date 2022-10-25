@@ -1,165 +1,155 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="pt-br">
-<head>
-    <!-- TAGS META -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block 'title' %} Cadastro de Funcionario {% endblock %}
+{% block content %}
+{% include 'partials/_cssMenu.html' %}
+{% include 'partials/_menu.html' %}
+<link rel="stylesheet" href="{% static 'css/funcionario.css' %}">
+<section>
+    <h1>Cadastro de Funcionário</h1>
+</section>
+<section class="cadastro">
+    <form class="formulario" action="{% url 'cadastroFuncionario' %}" method="POST" enctype="multipart/form-data">
 
-    <!-- LINKS CSS/BOOTSTRAP -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/cadastro-funcionario.css' %}">
-    <link rel="stylesheet" href="{% static 'css/fontes.css' %}">
+            <div class="titulo">
+                <hr>
+                <h2>Informações Pessoais</h2>
+                <hr>
+            </div>
+            {% csrf_token %}
+            <div>
+                {% include 'partials/_alert.html' %}
+                <label for="nome" class="form-label cadastro-label">Nome Completo</label>
+                <input id="nome" name="nome" class="form-control cadastro-input" type="text" required>
 
-    <title>Cadastro de Funcionário</title>
-</head>
-<body>
-    <section>
-        <h1>Cadastro de Funcionário</h1>
-    </section>
-    <section class="cadastro">
-        <form class="formulario" action="{% url 'cadastroFuncionario' %}" method="POST" enctype="multipart/form-data">
-
-                <div class="titulo">
-                    <hr>
-                    <h2>Informações Pessoais</h2>
-                    <hr>
-                </div>
-                {% csrf_token %}
                 <div>
-                    {% include 'partials/_alert.html' %}
-                    <label for="nome" class="form-label cadastro-label">Nome Completo</label>
-                    <input id="nome" name="nome" class="form-control cadastro-input" type="text" required>
-
-                    <div>
-                        <label for="nome" class="form-label cadastro-label">EMAIL</label>
-                        <input id="nome" name="email" class="form-control cadastro-input" type="email" required>
-                    </div>
-                    
-                    <div class="input-duplo">
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Endereço</label>
-                            <input id="nome" name="endereco" class="form-control cadastro-input" type="text" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Bairro</label>
-                            <input id="nome" name="bairro" class="form-control cadastro-input" type="text" required>
-                        </div>
-                    </div>
-
-                    <div class="input-duplo">
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">CEP</label>
-                            <input id="nome" name="cep" class="form-control cadastro-input" type="number" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Cidade</label>
-                            <input id="nome" name="cidade" class="form-control cadastro-input" type="text" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">UF</label>
-                            <input id="nome" name="uf" class="form-control cadastro-input" type="text" required>
-                        </div>
-                    </div>
-                    
-                    <div class="input-duplo">
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Telefone</label>
-                            <input id="nome" name="telefone" class="form-control cadastro-input" type="tel" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Contato de Emergência</label>
-                            <input id="nome" name="telefone_emergência" class="form-control cadastro-input" type="tel" required>
-                        </div>
-                    </div>
-                    <div class="input-duplo">
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">CPF</label>
-                            <input type="number" name="cpf" id="nome" class="form-control cadastro-input" type="text" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">RG</label>
-                            <input type="number" name="rg" id="nome" class="form-control cadastro-input" type="date" required>
-                        </div>
-                    </div>
-                    <div class="input-duplo">
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">imagem do CPF</label>
-                            <input type="file" name="image_cpf" id="nome" class="form-control cadastro-input" type="text" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">imagem do RG</label>
-                            <input type="file" name="foto_rg" id="nome" class="form-control cadastro-input" type="date" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">foto funcionario</label>
-                            <input type="file" name="foto_funcionario" id="nome" class="form-control cadastro-input" type="date" required>
-                        </div>
-                    </div>
-                   
-                    <div class="titulo2">
-                    <hr>
-                    <h2>Dados Profissionais</h2>
-                    <hr>
-                    </div>
-
-                    <div>
-                        <label for="nome" class="form-label cadastro-label">Função/Cargo</label>
-                        
-                        <select name="funcao" class="form-control cadastro-input" required>
-                            {% if funcoes %}
-                            {% for funcao in funcoes %}
-                                <option name="{{funcao.nome}}">{{funcao.nome}}
-                            {% endfor %}
-                            {% endif %}
-                        </select>
-                    </div>
-                    <div class="input-duplo">
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Horário de Trabalho Previsto</label>
-                            <input id="nome" name="horario" class="form-control cadastro-input" type="number" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Admitido</label>
-                            <input id="nome" name="admitido" class="form-control cadastro-input" type="date" required>
-                        </div>
-                    </div>
-                   
-                    <div class="titulo3">
-                      <hr>
-                      <h2>Dados Bancários</h2>
-                      <hr>
-                    </div>
- 
-              
-                    <div>
-                        <label for="nome" class="form-label cadastro-label">Banco</label>
-                        <input id="nome" name="banco" class="form-control cadastro-input" type="text" required>
-                    </div>
-                    <div class="input-duplo">
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Agência</label>
-                            <input id="nome" name="agencia" class="form-control cadastro-input" type="text" required>
-                        </div>
-                        <div>
-                            <label for="nome" class="form-label cadastro-label">Conta</label>
-                            <input id="nome" name="conta" class="form-control cadastro-input" type="text" required>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="nome"  class="form-label cadastro-label">PIX</label>
-                        <input id="nome" name="pix" class="form-control cadastro-input" type="text" required>
-                    </div>
-                   
-
-                    
-                    <button class="botao">Enviar</button>
+                    <label for="nome" class="form-label cadastro-label">EMAIL</label>
+                    <input id="nome" name="email" class="form-control cadastro-input" type="email" required>
                 </div>
-        </form>
-    </section>
+                
+                <div class="input-duplo">
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Endereço</label>
+                        <input id="nome" name="endereco" class="form-control cadastro-input" type="text" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Bairro</label>
+                        <input id="nome" name="bairro" class="form-control cadastro-input" type="text" required>
+                    </div>
+                </div>
 
-    <!-- LINK JQUERY / JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                <div class="input-duplo">
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">CEP</label>
+                        <input id="nome" name="cep" class="form-control cadastro-input" type="number" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Cidade</label>
+                        <input id="nome" name="cidade" class="form-control cadastro-input" type="text" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">UF</label>
+                        <input id="nome" name="uf" class="form-control cadastro-input" type="text" required>
+                    </div>
+                </div>
+                
+                <div class="input-duplo">
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Telefone</label>
+                        <input id="nome" name="telefone" class="form-control cadastro-input" type="tel" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Contato de Emergência</label>
+                        <input id="nome" name="telefone_emergência" class="form-control cadastro-input" type="tel" required>
+                    </div>
+                </div>
+                <div class="input-duplo">
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">CPF</label>
+                        <input type="number" name="cpf" id="nome" class="form-control cadastro-input" type="text" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">RG</label>
+                        <input type="number" name="rg" id="nome" class="form-control cadastro-input" type="date" required>
+                    </div>
+                </div>
+                <div class="input-duplo">
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">imagem do CPF</label>
+                        <input type="file" name="image_cpf" id="nome" class="form-control cadastro-input" type="text" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">imagem do RG</label>
+                        <input type="file" name="foto_rg" id="nome" class="form-control cadastro-input" type="date" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">foto funcionario</label>
+                        <input type="file" name="foto_funcionario" id="nome" class="form-control cadastro-input" type="date" required>
+                    </div>
+                </div>
+               
+                <div class="titulo2">
+                <hr>
+                <h2>Dados Profissionais</h2>
+                <hr>
+                </div>
+
+                <div>
+                    <label for="nome" class="form-label cadastro-label">Função/Cargo</label>
+                    
+                    <select name="funcao" class="form-control cadastro-input" required>
+                        {% if funcoes %}
+                        {% for funcao in funcoes %}
+                            <option name="{{funcao.nome}}">{{funcao.nome}}
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="input-duplo">
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Horário de Trabalho Previsto</label>
+                        <input id="nome" name="horario" class="form-control cadastro-input" type="number" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Admitido</label>
+                        <input id="nome" name="admitido" class="form-control cadastro-input" type="date" required>
+                    </div>
+                </div>
+               
+                <div class="titulo3">
+                  <hr>
+                  <h2>Dados Bancários</h2>
+                  <hr>
+                </div>
+
+          
+                <div>
+                    <label for="nome" class="form-label cadastro-label">Banco</label>
+                    <input id="nome" name="banco" class="form-control cadastro-input" type="text" required>
+                </div>
+                <div class="input-duplo">
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Agência</label>
+                        <input id="nome" name="agencia" class="form-control cadastro-input" type="text" required>
+                    </div>
+                    <div>
+                        <label for="nome" class="form-label cadastro-label">Conta</label>
+                        <input id="nome" name="conta" class="form-control cadastro-input" type="text" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="nome"  class="form-label cadastro-label">PIX</label>
+                    <input id="nome" name="pix" class="form-control cadastro-input" type="text" required>
+                </div>
+               
+
+                
+                <button class="botao">Enviar</button>
+            </div>
+    </form>
+</section>
+
+<!-- LINK JQUERY / JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+

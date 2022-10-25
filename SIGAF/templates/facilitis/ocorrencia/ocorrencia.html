@@ -1,81 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} Pagina Inicil {% endblock %}
+{% block content %}
+{% include 'partials/_cssMenu.html' %}
+{% include 'partials/_menu.html' %}
 
-    <!-- Link Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-
-    <!-- Links Bootstrap CSS/JavaScript -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-
-     <!-- Links CSS -->
-     <link rel="stylesheet" href="./../../../static/css/ocorrencia.css">
-     <link rel="stylesheet" href="./../../../static/css/fontes.css">
-    <title>ADM - Ocorrências</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg gestor-menu fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="./img/logo-CEFAT.png" alt="" width="40" height="50"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon menu-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse navegaçao" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item perfil-link">
-                            <a class="nav-link" href="#">Perfil</a>
-                        </li>
-                        <li class="nav-item sair-link">
-                            <a class="nav-link" href="#">Sair</a>
-                        </li>
-                    </ul>
-                    <div class="perfil">
-                        <p>Nome do ADM</p>
-                        <div class="dropstart dropdown2">
-                            <div class="container perfil-img">
-                                <button class="navbar-brand perfil-button" data-bs-toggle="dropdown" aria-expanded="false"><img src="./img/allana-miranda.jpeg"></button>
-                                <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#">Perfil</a></li>
-                                  <li><a class="dropdown-item" href="#">Sair</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+<link rel="stylesheet" href="{% static 'css/ocorrencia_i.css' %}">
     <main>
         <section class="ocorrencias">
             <div class="indices">
                 <div class="indice indice-pendente">
                     <p>Pendentes</p>
-                    <div><p>N</p></div>
+                    <div><p>{{op}}</p></div>
                 </div>
                 <div class="indice indice-processo">
                     <p>Em processo</p>
-                    <div><p>N</p></div>
+                    <div><p>{{ep}}</p></div>
                 </div>
                 <div class="indice indice-resolvido">
                     <p>Resolvidas</p>
-                    <div><p>N</p></div>
+                    <div><p>{{r}}</p></div>
                 </div>
             </div>
 
@@ -85,41 +29,11 @@
                 </div>
                 <div class="swiper slide-content-ocorrencia">
                     <div class="swiper-wrapper">
+                        {% for ocorrencia in ocorrencias %}
                         <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
+                            <p><a href="{% url 'edita_ocorrencia' ocorrencia.id %}">{{ocorrencia.detalhes_ocorrencia}}</a></p>
                         </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
-
-                        <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="#">Titulo da Ocorrência</a></p>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="swiper-scrollbar paginaçao"></div>
                 </div>
@@ -131,6 +45,5 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <!-- JS -->
-    <script src="./../../../static/js/ocorrencia.js"></script>
-</body>
-</html>
+    <script src="{% static 'js/ocorrencia.js' %}"></script>
+{% endblock %}

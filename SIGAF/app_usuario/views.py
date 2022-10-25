@@ -7,6 +7,7 @@ from .util import validar_campo_senha, validar_campo_vazio, validar_nome_de_usua
 from django.contrib import messages
 from app_atleta.models import Atletas
 from django.contrib.auth.decorators import login_required
+from app_facilitis.models.ocorencias import Ocorrencia
 
 def login(request):
     """Campo para autenticar o usuario"""
@@ -88,7 +89,15 @@ def index(request):
     if usuario2.tipo_u.sigla == "GES":
         return render(request, "gestor/index.html", dados)
     elif usuario2.tipo_u.sigla == "FAC":
-        return render(request, "facilitis/index.html",dados)
+        ocorrencias = Ocorrencia.objects.all()
+        ocorrencia_p = Ocorrencia.objects.filter(fase = "P").count()
+        ocorrencia_ep = Ocorrencia.objects.filter(fase = "EP").count()
+        ocorrencia_r = Ocorrencia.objects.filter(fase = "R").count()
+        dados["ocorrencias"] = ocorrencias
+        dados["op"] = ocorrencia_p
+        dados["ep"] = ocorrencia_ep
+        dados["r"] = ocorrencia_r
+        return render(request, "facilitis/ocorrencia/ocorrencia.html",dados)
     elif usuario2.tipo_u.sigla == "PRF":
         return render(request, "proficional/index.html", dados)
 

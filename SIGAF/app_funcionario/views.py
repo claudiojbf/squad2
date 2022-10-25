@@ -2,11 +2,17 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from app_funcionario.models import Funcionario, Funcao
 from django.contrib.auth.models import User
+
 from app_funcionario.valida import *
+from app_usuario.models import Usuario
+
 def cadastroFuncionario(request):
+    usuario = request.user.id
+    usuario2 = Usuario.objects.get(usuario_id = usuario)
     funcoes = Funcao.objects.order_by('id')
     dados = {
-        'funcoes':funcoes
+        'funcoes':funcoes,
+        'usuario': usuario2
     }
     if request.method == 'POST':
         nome = request.POST ['nome']

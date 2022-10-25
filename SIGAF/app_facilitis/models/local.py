@@ -1,5 +1,5 @@
 from django.db import models
-from django.forms import CharField
+
 
 class Local(models.Model):
     nome_do_espaco = models.CharField(max_length=200)

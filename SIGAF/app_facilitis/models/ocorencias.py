@@ -1,3 +1,5 @@
+from email.policy import default
+from unittest.mock import DEFAULT
 from django.db import models
 from app_facilitis.models.local import Local
 
@@ -11,6 +13,6 @@ class Ocorrencia(models.Model):
     descricao_ocorrido = models.TextField()
     nivel_urgencia = models.ForeignKey(NivelDeOcorrencia, on_delete=models.CASCADE)
     email = models.EmailField(max_length=100, null=False, blank=False)
-    status = models.BooleanField(default=True)
+    fase = models.CharField(max_length=2, default = "P")
 
     
