@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block 'title' %} Pagina Inicil {% endblock %}
-{% block content %}
-{% include 'partials/_cssMenu.html' %}
-{% include 'partials/_menu.html' %}
-
+{% block 'head' %}
 <link rel="stylesheet" href="{% static 'css/ocorrencia_i.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'partials/_menu.html' %}
     <main>
         <section class="ocorrencias">
             <div class="indices">
@@ -31,7 +31,7 @@
                     <div class="swiper-wrapper">
                         {% for ocorrencia in ocorrencias %}
                         <div class="swiper-slide slide-ocorrencia">
-                            <p><a href="{% url 'edita_ocorrencia' ocorrencia.id %}">{{ocorrencia.detalhes_ocorrencia}}</a></p>
+                            <p><a href="{% url 'mostra_ocorrencia' ocorrencia.id %}">{{ocorrencia.detalhes_ocorrencia}}</a></p>
                         </div>
                         {% endfor %}
                     </div>

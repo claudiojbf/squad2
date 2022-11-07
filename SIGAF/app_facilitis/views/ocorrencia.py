@@ -14,9 +14,13 @@ def listar_ocorrencias(request):
 
 def mostra_ocorrencia(request, ocorrencia_id):
     ocorrencia = get_object_or_404(Ocorrencia, pk=ocorrencia_id)
+    usuario = request.user.id
+    usuario2 = Usuario.objects.get(usuario_id = usuario)
+    
         
     dados_ocorrencia = {
-            'ocorrencia': ocorrencia
+            'ocorrencia': ocorrencia,
+            'usuario' : usuario2,
         }
     return render (request, 'facilitis/ocorrencia/mostra_ocorrencia.html', dados_ocorrencia)
 

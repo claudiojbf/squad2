@@ -1,6 +1,69 @@
-<h1>Sala em que ocorreu o problema: {{ocorrencia.local}}</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} {{ocorrencia.detalhes_ocorrencia}} {% endblock %}
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/mostrar-ocorrencia.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'partials/_menu.html' %}
 
-<h2>Detalhes da Ocorrência: {{ocorrencia.detalhes_ocorrencia}}</h2>
-<h2>Descrição do Ocorrido: {{ocorrencia.descricao_ocorrido}}</h2>
-<h2>Nível de urgência: {{ocorrencia.nivel_urgencia}}</h2>
-<h2>Email do responsavel: {{ocorrencia.email}}</h2>
+<section>
+    <!-- <h1>Ocorrencias</h1> -->
+</section>
+<section class="ocorrencias">
+    <div class="titulo">
+        <hr>
+        <h2>{{ ocorrencia.detalhes_ocorrencia }}</h2>
+        <hr>
+    </div>
+    <div class="detalhes">
+        <div>
+            <div>
+                <p>Local da Ocorrência:</p>
+                <p>{{ocorrencia.local.nome_do_espaco}}</p>
+            </div>
+
+            <div>
+                <p>Status:</p>
+            <p>{{ocorrencia.get_fase_display}}</p>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <p>Nome:</p>
+                <p>Fulano de tal dos santos</p>
+            </div>
+            <div>
+                <p>Email:</p>
+                <p>LoremIpsum@dominio.com</p>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <p>Data da Ocorrência:</p>
+                <p>00/00/0000</p>
+            </div>
+            <div>
+                <p>Nivel de Urgência:</p>
+                <p>{{ocorrencia.nivel_urgencia.descricao}}</p>
+            </div>
+        </div>
+        <div>
+            <p>Detalhes da Ocorrencia:</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed at nisi, id mollitia aliquid dolor, reprehenderit vel inventore suscipit dolore eaque voluptas nobis dicta sint quod tenetur, debitis aut repellat.</p>
+        </div>
+
+    </div>   
+    <div class="botoes-ocorrencia">
+        <button class="botao botao-pendente">Pendente</button>
+        <button class="botao botao-processo">Em Processo</button>
+        <button class="botao botao-concluido">Concluído</button>
+    </div>         
+</section>
+
+<!-- LINK JQUERY / JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
