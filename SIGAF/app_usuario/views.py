@@ -12,11 +12,10 @@ from app_facilitis.models.ocorencias import Ocorrencia
 def login(request):
     """Campo para autenticar o usuario"""
     if request.method == 'POST':
-        email = request.POST.get('email')
+        user_n = request.POST.get('user_n')
         senha = request.POST.get('senha')
-        if User.objects.filter(email = email).exists():
-            nome = User.objects.filter(email = email).values_list('username', flat=True).get()
-            user = auth.authenticate(request, username = nome, password = senha)
+        if User.objects.filter(username = user_n).exists():
+            user = auth.authenticate(request, username = user_n, password = senha)
             if user is not None:
                 auth.login(request, user)
                 return redirect('index')

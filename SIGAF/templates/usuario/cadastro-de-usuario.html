@@ -1,20 +1,12 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <!-- TAGS META -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
-
-    <!-- LINKS CSS/BOOTSTRAP -->
-    {% include 'partials/_cssMenu.html' %}
-    <link rel="stylesheet" href="{% static 'css/cadastro-de-usuario.css' %}">
-
-   
-</head>
-<body>
+{% block 'title' %} Cadastro de Usuario {% endblock %}
+{% block 'head' %}
+<!-- LINKS CSS/BOOTSTRAP -->
+{% include 'partials/_cssMenu.html' %}
+<link rel="stylesheet" href="{% static 'css/cadastro-de-usuario.css' %}">
+{% endblock %}
+{% block content %}
     {% include 'partials/_menu.html' %}
     <section>
         <h1>Cadastro de Usuário</h1>
@@ -123,5 +115,4 @@
 
     <!-- LINK JQUERY / JS -->
     <script src="{% static 'js/step.js'%}"></script>
-</body>
-</html>
+{% endblock %}

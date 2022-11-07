@@ -1,8 +1,11 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% block 'title' %} Login-CEFAT {% endblock %}
-{% block content %}
+{% block 'head' %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+
      <!-- LOGIN -->
      <section class="login-principal">
         <div class="container-fluid login-principal-div">
@@ -14,21 +17,21 @@
                 <img class="logo" src="{% static 'img/logo-CEFAT.png' %}" alt="">
             </div>
             <div>
-                
+               
                 <!-- LOGIN-DIVISÃO -->
                 <div class="login-divisa">
                     <hr>
                     <p class="texto-divisa">SEUS DADOS:</p>
                     <hr>
-                    
+                   
                 </div>
                 {% include "partials/_alert.html" %}
                 <!-- FORMULÁRIO -->
                 <form action="{% url 'login' %}" method="POST">
                     {% csrf_token %}
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label email-label">EMAIL</label>
-                      <input type="email" name = "email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <label for="exampleInputEmail1" class="form-label email-label">NOME DE USUARIO</label>
+                      <input type="text" name = "user_n" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label senha-label">SENHA</label>
