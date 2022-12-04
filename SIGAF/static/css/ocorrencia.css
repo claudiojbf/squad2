@@ -87,6 +87,10 @@ section:last-child{
     align-items: center;
 }
 
+.indice>p{
+    font-size: 22px;
+}
+
 .indice>div>p{
     font-size: 35px;
 }
